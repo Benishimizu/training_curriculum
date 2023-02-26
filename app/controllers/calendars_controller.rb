@@ -8,14 +8,20 @@ class CalendarsController < ApplicationController
 
   # 予定の保存
   def create
+    # binding.pry
     Plan.create(plan_params)
     redirect_to action: :index
+
   end
 
   private
 
   def plan_params
-    params.require(:calendars).permit(:date, :plan)
+    params.require(:plan).permit(:date, :plan)
+    # params.require(:モデル名).permit(:キー名, :キー名) # 取得したいキーを指定する
+    # https://master.tech-camp.in/v2/curriculums/4217
+    # [1] pry(#<CalendarsController>)> params   としてもわかる
+    # => <ActionController::Parameters {"authenticity_token"=>"AAFA8PqKBDrPloXs/YYFFSerDMP+NhA5hk46BnX3WyNIQtUzqegESkWVq1rYgbNgC/+VAR35Ty8PVYh2tjGT
   end
 
   def getWeek
